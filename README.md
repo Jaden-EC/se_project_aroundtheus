@@ -28,7 +28,7 @@ Making use of the CSS grid layout function we have a sleek minimalist style prof
 ### Links
 
 - [Github Repo](https://github.com/Jaden-EC/se_project_aroundtheus)
-- [Live Site](jaden-ec.github.io)
+- [Live Site](https://jaden-ec.github.io/se_project_aroundtheus/)
 
 ---
 
