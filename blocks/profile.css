@@ -19,7 +19,7 @@
   height: 120px;
   border-radius: 50%;
   object-fit: cover;
-  background-position: center;
+  object-position: center;
   margin-right: 30px;
 }
 
@@ -51,8 +51,7 @@
   width: 24px;
   height: 24px;
   grid-area: button;
-  margin-left: 18px;
-  margin-right: 10px;
+  margin: 0 10px 0 18px;
   cursor: pointer;
   transition: 0.2s ease-in-out;
 }
@@ -118,7 +117,6 @@
 
   .profile__add-button {
     margin: 36px 0;
-    height: 50px;
     width: calc(100% - 40px);
   }
 }
