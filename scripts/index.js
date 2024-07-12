@@ -44,7 +44,10 @@ const cardTemplate =
 const addCardButton = document.querySelector("#profile__add-button");
 const addCardModal = document.querySelector("#profile-add-modal");
 const addCardCloseButton = addCardModal.querySelector("#profile-add-close");
-const likeButtons = document.querySelector("#");
+const imageModal = document.querySelector("#image-modal");
+const previewImage = imageModal.querySelector(".modal__image");
+const previewImageCaption = imageModal.querySelector(".modal__caption");
+const previewImageButtonClose = imageModal.querySelector(".modal__close");
 
 /* -------------------------------------------------------------------------- */
 /*                                  Functions                                 */
@@ -57,9 +60,28 @@ function getCardElement(cardData) {
   const cardElement = cardTemplate.cloneNode(true);
   const cardImageEl = cardElement.querySelector(".card__image");
   const cardTextEl = cardElement.querySelector(".card__text");
+  const likeButton = cardElement.querySelector(".card__like-button");
+  const deleteButton = cardElement.querySelector(".card__delete-button");
+
+  likeButton.addEventListener("click", () => {
+    likeButton.classList.toggle("card__like-button_active");
+  });
+
+  deleteButton.addEventListener("click", () => {
+    cardElement.remove(".card");
+  });
+
+  cardImageEl.addEventListener("click", () => {
+    openModal(imageModal);
+    previewImage.src = cardData.link;
+    previewImage.alt = cardData.alt;
+    previewImageCaption.textContent = cardData.name;
+  });
+
   cardImageEl.src = cardData.link;
   cardImageEl.alt = cardData.name;
   cardTextEl.textContent = cardData.name;
+
   return cardElement;
 }
 
@@ -97,6 +119,8 @@ profileEditButtonClose.addEventListener("click", () =>
 profileEditForm.addEventListener("submit", handleProfileEditSubmit);
 addCardButton.addEventListener("click", () => openModal(addCardModal));
 addCardCloseButton.addEventListener("click", () => closeModal(addCardModal));
+
+previewImageButtonClose.addEventListener("click", () => closeModal(imageModal));
 
 initialCards.forEach((cardData) => {
   const cardElement = getCardElement(cardData);

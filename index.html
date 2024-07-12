@@ -78,7 +78,7 @@
         </form>
       </div>
     </div>
-    <!--Add card modal-->
+    <!--Card modal-->
     <div class="modal" id="profile-add-modal">
       <div class="modal__container">
         <button id="profile-add-close" class="modal__close"></button>
@@ -108,8 +108,20 @@
         </form>
       </div>
     </div>
+    <div class="modal" id="image-modal">
+      <div class="modal__container modal__container_type_image">
+        <button class="modal__close"></button>
+        <img src="" alt="" class="modal__image" />
+        <p class="modal__caption"></p>
+      </div>
+    </div>
     <template id="card-template"
       ><li class="card">
+        <button
+          type="button"
+          aria-label="delete"
+          class="card__delete-button"
+        ></button>
         <img src="" alt="" class="card__image" />
         <div class="card__description">
           <h2 class="card__text"></h2>
