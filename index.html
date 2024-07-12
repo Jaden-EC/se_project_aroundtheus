@@ -34,6 +34,7 @@
             <p class="profile__description">Explorer</p>
           </div>
           <button
+            id="profile__add-button"
             type="button"
             aria-label="add"
             class="profile__add-button"
@@ -47,7 +48,7 @@
         <p class="footer__copyright">© 2024 Around The U.S.</p>
       </footer>
     </div>
-
+    <!--Edit modal-->
     <div class="modal" id="profile-edit-modal">
       <div class="modal__container">
         <button id="profile-edit-close" class="modal__close"></button>
@@ -56,7 +57,7 @@
           <input
             type="text"
             name="title"
-            class="modal__input"
+            class="modal__input modal__input_type_name"
             id="profile-name-input"
             placeholder="Name"
             minlength="3"
@@ -66,9 +67,39 @@
           <input
             type="text"
             name="description"
-            class="modal__input"
+            class="modal__input modal__input_type_description"
             id="profile-description-input"
             placeholder="Description"
+            minlength="3"
+            maxlength="200"
+            required
+          />
+          <button type="submit" class="modal__button">Save</button>
+        </form>
+      </div>
+    </div>
+    <!--Add card modal-->
+    <div class="modal" id="profile-add-modal">
+      <div class="modal__container">
+        <button id="profile-add-close" class="modal__close"></button>
+        <p class="modal__heading">New Place</p>
+        <form class="modal__form">
+          <input
+            type="text"
+            name="title"
+            class="modal__input modal__input_type_title"
+            id="add-card-form-title"
+            placeholder="Title"
+            minlength="3"
+            maxlength="30"
+            required
+          />
+          <input
+            type="text"
+            name="url"
+            class="modal__input modal__input_type_url"
+            id="add-card-form-url"
+            placeholder="Image URL"
             minlength="3"
             maxlength="200"
             required
