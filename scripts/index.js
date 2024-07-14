@@ -48,6 +48,9 @@ const imageModal = document.querySelector("#image-modal");
 const previewImage = imageModal.querySelector(".modal__image");
 const previewImageCaption = imageModal.querySelector(".modal__caption");
 const previewImageButtonClose = imageModal.querySelector(".modal__close");
+const addCardForm = addCardModal.querySelector(".modal__form");
+const cardTitleInput = addCardForm.querySelector(".modal__input_type_title");
+const cardUrlInput = addCardForm.querySelector(".modal__input_type_url");
 
 /* -------------------------------------------------------------------------- */
 /*                                  Functions                                 */
@@ -89,6 +92,11 @@ function openModal(modal) {
   modal.classList.add("modal_opened");
 }
 
+function renderCard(cardData, wrapper) {
+  const cardElement = getCardElement(cardData);
+  wrapper.prepend(cardElement);
+}
+
 /* -------------------------------------------------------------------------- */
 /*                               Event Handlers                               */
 /* -------------------------------------------------------------------------- */
@@ -101,6 +109,9 @@ function handleProfileEditSubmit(evt) {
 
 function handleProfileAddSubmit(evt) {
   evt.preventDefault();
+  const name = cardTitleInput.value;
+  const link = cardUrlInput.value;
+  renderCard({ name, link }, cardListEl);
   closeModal(addCardModal);
 }
 
@@ -117,12 +128,10 @@ profileEditButtonClose.addEventListener("click", () =>
   closeModal(profileEditModal)
 );
 profileEditForm.addEventListener("submit", handleProfileEditSubmit);
+addCardForm.addEventListener("submit", handleProfileAddSubmit);
 addCardButton.addEventListener("click", () => openModal(addCardModal));
 addCardCloseButton.addEventListener("click", () => closeModal(addCardModal));
 
 previewImageButtonClose.addEventListener("click", () => closeModal(imageModal));
 
-initialCards.forEach((cardData) => {
-  const cardElement = getCardElement(cardData);
-  cardListEl.prepend(cardElement);
-});
+initialCards.forEach((cardData) => renderCard(cardData, cardListEl));
