@@ -28,6 +28,7 @@ const initialCards = [
 /* -------------------------------------------------------------------------- */
 /*                                  Elements                                  */
 /* -------------------------------------------------------------------------- */
+const popups = document.querySelectorAll(".modal");
 const profileEditButton = document.querySelector("#profile-edit-button");
 const profileEditModal = document.querySelector("#profile-edit-modal");
 const nameInput = document.querySelector("#profile-name");
@@ -141,31 +142,15 @@ profileEditForm.addEventListener("submit", handleProfileEditSubmit);
 addCardForm.addEventListener("submit", handleProfileAddSubmit);
 addCardButton.addEventListener("click", () => openModal(addCardModal));
 
-profileEditModal.addEventListener("mousedown", (evt) => {
-  if (
-    evt.target.classList.contains("modal") ||
-    evt.target.classList.contains("modal__close")
-  ) {
-    closeModal(profileEditModal);
-  }
-});
-
-addCardModal.addEventListener("mousedown", (evt) => {
-  if (
-    evt.target.classList.contains("modal") ||
-    evt.target.classList.contains("modal__close")
-  ) {
-    closeModal(addCardModal);
-  }
-});
-
-imageModal.addEventListener("mousedown", (evt) => {
-  if (
-    evt.target.classList.contains("modal") ||
-    evt.target.classList.contains("modal__close")
-  ) {
-    closeModal(imageModal);
-  }
+popups.forEach((popup) => {
+  popup.addEventListener("mousedown", (evt) => {
+    if (evt.target.classList.contains("modal_opened")) {
+      closeModal(popup);
+    }
+    if (evt.target.classList.contains("modal__close")) {
+      closeModal(popup);
+    }
+  });
 });
 
 initialCards.forEach((cardData) => renderCard(cardData, cardListEl));
