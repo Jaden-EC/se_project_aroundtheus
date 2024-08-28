@@ -52,8 +52,9 @@ const closeButtons = document.querySelectorAll(".modal__close");
 /*                                  Functions                                 */
 /* -------------------------------------------------------------------------- */
 function isEscEvent(evt, action) {
-  const activeModal = document.querySelector(".modal_opened");
+  //const activeModal = document.querySelector(".modal_opened");
   if (evt.key === "Escape") {
+    const activeModal = document.querySelector(".modal_opened");
     action(activeModal);
   }
 }
@@ -75,7 +76,7 @@ function getCardElement(cardData) {
   });
 
   deleteButton.addEventListener("click", () => {
-    cardElement.remove(".card");
+    cardElement.remove();
   });
 
   cardImageEl.addEventListener("click", () => {
@@ -168,8 +169,3 @@ imageModal.addEventListener("mousedown", (evt) => {
 });
 
 initialCards.forEach((cardData) => renderCard(cardData, cardListEl));
-
-closeButtons.forEach((button) => {
-  const modal = button.closest(".modal");
-  button.addEventListener("click", () => closeModal(modal));
-});
